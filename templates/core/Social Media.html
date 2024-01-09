@@ -1,0 +1,73 @@
+{%load static%}
+
+<!-- Doctype explains the file type of the document-->
+<!DOCTYPE html>
+<!-- head contols the title of the page, websearch optimization and meta data-->
+<head>
+    <!-- Tells the website is using unicode-->
+    <meta charset="UTF-8">
+
+    <!-- Sets screen size to device display size-->
+    <meta name = "viewport" content="width=device-width, initial-scale-1.0">
+
+    <!--Web search info-->
+    <meta name="description" content="Test project for html">
+    <meta name="keywords" content="HTML">
+    <meta name="author" content="Roni Mujku">
+
+    <title>Bean and Brew\Social media</title>
+    <!-- Link css file to html-->
+    <link rel="stylesheet" href="{%static 'assets/styles.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <h1 class = "bean">
+        Bean and Brew
+    </h1>
+    <h2 class="bean">Cafe</h2>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="Booking.html">Bookings</a>
+        <a class="active" href="Social Media.html">Social Media</a>
+        <a href="About.html">About</a>
+    </div>
+
+    <div class = "social">
+        <div>
+            <img src="cafe.png" height = 700 style="margin: 10px; border: 1px solid black;"></img>
+        </div>
+        <div class = "wrap">
+            <div class = boxalt3>
+                <a href="#" class="fa fa-instagram"></a>
+                Join us on Instagram
+            </div>
+            <div class = boxalt3>
+                <a href="#" class="fa fa-facebook"></a>
+                Join us on Facebook
+            </div>
+            <div class = boxalt3>
+                <a href="#" class="fa fa-twitter"></a>
+                Join us on Twitter
+            </div>
+            <div class = boxalt3>
+                <a href="#" class="fa fa-linkedin"></a>
+                Join us on Linkedin
+            </div>
+            <div class = boxalt3>
+                <a href="#" class="fa fa-reddit"></a>
+                Join us on Reddit
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footerbox">
+            <p>
+                Bean&Brew.com
+                <br><br>
+                The number one family owned cafe
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

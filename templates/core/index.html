@@ -1,0 +1,97 @@
+{%load static%}
+
+<!-- Doctype explains the file type of the document-->
+<!DOCTYPE html>
+<!-- head contols the title of the page, websearch optimization and meta data-->
+<head>
+    <!-- Tells the website is using unicode-->
+    <meta charset="UTF-8">
+
+    <!-- Sets screen size to device display size-->
+    <meta name = "viewport" content="width=device-width, initial-scale-1.0">
+
+    <!--Web search info-->
+    <meta name="description" content="Test project for html">
+    <meta name="keywords" content="HTML">
+    <meta name="author" content="Roni Mujku">
+
+    <title>Bean and Brew</title>
+    <!-- Link css file to html-->
+    <link rel="stylesheet" href="{%static 'assets/styles.css'%}">
+    
+</head>
+<body>
+    <h1 class = "bean">
+        Bean & Brew
+    </h1>
+    <h2 class="bean">Cafe</h2>
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="Booking.html">Bookings</a>
+        <a href="Social Media.html">Social Media</a>
+        <a href="About.html">About</a>
+    </div>
+    <div class="pad">
+    <p> 
+        Welcome to bean and brew the number one family owned cafe in the UK, feel free to use our website to book items for pickup at one of our three locations and to join us and make an account to keep up to date with news of new offers and events. Also feel free to join in on our #ratemycake social media campaign to support us
+    </p>
+    <h3> 
+        To log in or create an account click here
+    </h3>
+    
+    <button class="button" data-target = "#modal1">Log in</button>
+    <button class="button" data-target = "#modal2">Sign Up</button>
+    </div>
+
+    <div class = "modal" id = "modal1">
+        <div class="header">
+            <button class="modal-btn" data-target = "#modal1">&times;</button>
+            <h1>Sign in to Bean & Brew</h1>
+            
+        </div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        New to Bean & Brew?
+        <a href="#modal2" data-toggle="modal" data-target="#modal2" data-dismiss="modal">Create an Account</a>
+        <br><br>
+        <input type="submit" value="Submit">
+    </div>
+
+    <div class = "modal" id = "modal2">
+        <div class="header">
+        <button class="modal-btn" data-target = "#modal2">&times;</button>
+        <div style="text-align: center;">
+        <img src = "3276535.png" width="200" height = "200"><img>
+        </div>
+        </div>
+        <h3>Create an account for Bean & Brew</h3>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="conpassword">Confirm Password:</label>
+        <input type="password" id="conpassword" name="conpassword"><br><br>
+        <input type="submit" value="Submit">
+    </div>
+
+    <div id = "overlay"></div>
+    <script src="script.js"></script>
+
+    <footer class="footer">
+        <div class="footerbox">
+            <p>
+                Bean&Brew.com
+                <br><br>
+                The number one family owned cafe
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

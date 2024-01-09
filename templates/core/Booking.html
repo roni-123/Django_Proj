@@ -1,0 +1,101 @@
+{%load static%}
+
+<!-- Doctype explains the file type of the document-->
+<!DOCTYPE html>
+<!-- head contols the title of the page, websearch optimization and meta data-->
+<head>
+    <!-- Tells the website is using unicode-->
+    <meta charset="UTF-8">
+
+    <!-- Sets screen size to device display size-->
+    <meta name = "viewport" content="width=device-width, initial-scale-1.0">
+
+    <!--Web search info-->
+    <meta name="description" content="Test project for html">
+    <meta name="keywords" content="HTML">
+    <meta name="author" content="Roni Mujku">
+
+    <title>Bean and Brew\Booking</title>
+    <!-- Link css file to html-->
+    <link rel="stylesheet" href="{%static 'assets/styles.css'%}">
+    
+</head>
+<body>
+    <h1 class = "bean">
+        Bean and Brew
+    </h1>
+    <h2 class="bean">Cafe</h2>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a class="active" href="Booking.html">Bookings</a>
+        <a href="Social Media.html">Social Media</a>
+        <a href="About.html">About</a>
+    </div>
+
+    <div class = "buttonalign">
+        <button class="button" data-target = "#modal1">Book a Table</button>
+        <button class="button">Order an Item</button>
+        <button class="button" data-target = "#modal3">Book a Class</button>
+    </div>
+
+    <div class = "modal" id = "modal1">
+        <div class = "header">
+            <button class="modal-btn" data-target = "#modal1">&times;</button>
+            <h3>You are booking a table at</h3><select name="Location" id="Location">
+                <option value="" selected="selected">Harrogate</option>
+                <option value="" selected="selected">Leeds</option>
+                <option value="" selected="selected">Knaresborough Castle</option>
+                </select><br>
+        </div>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"><br>
+        <label for="Time">Time:</label>
+        <input type="time " value="08:30:00" step="600"><br>
+        <label for="people">People</label>
+        <select name="Peoples" id="Peoples">
+            <option value="" selected="selected">1 Person</option>
+            <option value="" selected="selected">2 People</option>
+            <option value="" selected="selected">3 People</option>
+            <option value="" selected="selected">4 People</option>
+            <option value="" selected="selected">5 People</option>
+        </select><br><br>
+        <label for="Full Name">Full Name:</label>
+        <input id = "Full Name" name ="Full Name"><br><br>
+        <label for="Email">Email:</label>
+        <input type = "email" id = "Email" name ="Email"><br><br>
+        <label for="Phone">Phone Number:</label>
+        <input type = "number" id = "Phone Number" name ="Phone Number">
+    </div>
+
+    <div class = "modal" id = "modal3">
+        <div class = "header">
+            <button class="modal-btn" data-target = "#modal3">&times;</button>
+            <h3>You are booking a Cooking Class</h3>
+        </div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"><br>
+        <label for="Time">Time:</label>
+        <input type="time " value="08:30:00" step="600"><br>
+        <label for="Full Name">Full Name:</label>
+        <input id = "Full Name" name ="Full Name"><br><br>
+        <label for="Email">Email:</label>
+        <input type = "email" id = "Email" name ="Email"><br><br>
+        <label for="Phone">Phone Number:</label>
+        <input type = "number" id = "Phone Number" name ="Phone Number">
+
+    </div>
+
+    <div id = "overlay"></div>
+    <script src="script.js"></script>
+
+    <footer class="footer">
+        <div class="footerbox">
+            <p>
+                Bean&Brew.com
+                <br><br>
+                The number one family owned cafe
+            </p>
+        </div>
+    </footer>
+</body>
