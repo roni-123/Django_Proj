@@ -248,6 +248,20 @@ dialog:not(:target):not([open]) { display: none; }
     flex-direction: column;
 }
 
+.menu{
+    display: flex;
+    flex-direction: column;
+    width : 200px;
+    height : 200px;
+    margin-right: 10px;
+}
+
+.menuimg{
+    height:"200px";
+    width:"200px"
+}
+
+
 .modal{
     display: flex;
     flex-direction: column;
