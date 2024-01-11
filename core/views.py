@@ -9,7 +9,7 @@ def about(request):
     return render(request, "core/About.html")
 
 def booking(request):
-    return render(request, "core/Bookin.html")
+    return render(request, "core/Booking.html")
 
 def socialmedia(request):
     return render(request, "core/Social Media.html")

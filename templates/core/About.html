@@ -27,10 +27,10 @@
     <h2 class="bean">Cafe</h2>
     
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="Booking.html">Bookings</a>
-        <a href="Social Media.html">Social Media</a>
-        <a class="active" href="About.html">About</a>
+        <a href="{% url 'core:index' %}">Home</a>
+        <a href="{% url 'core:Booking'%}">Bookings</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a class="active" href="{% url 'core:About'%}">About</a>
     </div>
     <div class="boxalign">
         <div class="boxalt">
@@ -48,7 +48,7 @@
             </p>
         </div>
         <div class = "boxalt" style="padding: 0;">
-            <img src = "Latte.jpg" height = 100%><img>
+            <img src = "{% static 'assets/Latte.jpg' %}" height = 100%><img>
         </div>
         <div class = "boxalt">
             <p>

@@ -22,14 +22,14 @@
 </head>
 <body>
     <h1 class = "bean">
-        Bean and Brew
+        Bean & Brew
     </h1>
     <h2 class="bean">Cafe</h2>
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a class="active" href="Booking.html">Bookings</a>
-        <a href="Social Media.html">Social Media</a>
-        <a href="About.html">About</a>
+        <a href="{% url 'core:index' %}">Home</a>
+        <a class="active" href="{% url 'core:Booking'%}">Bookings</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a href="{% url 'core:About'%}">About</a>
     </div>
 
     <div class = "buttonalign">
@@ -87,7 +87,7 @@
     </div>
 
     <div id = "overlay"></div>
-    <script src="script.js"></script>
+    <script src="{% static '../static/assets/script.js' %}"></script>
 
     <footer class="footer">
         <div class="footerbox">

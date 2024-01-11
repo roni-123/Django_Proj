@@ -24,3 +24,5 @@ window.onclick = (e) => {
         overlay.classList.remove("active");
     }
 }
+
+console.log("JS is connected")

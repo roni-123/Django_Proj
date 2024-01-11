@@ -26,10 +26,10 @@
     </h1>
     <h2 class="bean">Cafe</h2>
     <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="Booking.html">Bookings</a>
-        <a href="Social Media.html">Social Media</a>
-        <a href="About.html">About</a>
+        <a class="active" href="{% url 'core:index' %}">Home</a>
+        <a href="{% url 'core:Booking'%}">Bookings</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a href="{% url 'core:About'%}">About</a>
     </div>
     <div class="pad">
     <p> 
@@ -50,9 +50,9 @@
             
         </div>
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email1" name="email"><br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
+        <input type="password" id="password1" name="password"><br><br>
         New to Bean & Brew?
         <a href="#modal2" data-toggle="modal" data-target="#modal2" data-dismiss="modal">Create an Account</a>
         <br><br>
@@ -63,25 +63,26 @@
         <div class="header">
         <button class="modal-btn" data-target = "#modal2">&times;</button>
         <div style="text-align: center;">
-        <img src = "3276535.png" width="200" height = "200"><img>
+        <img src = "{% static '../static/assets/3276535.png' %}" width="200" height = "200"><img>
         </div>
         </div>
         <h3>Create an account for Bean & Brew</h3>
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email2" name="email"><br><br>
         <label for="fname">First name:</label>
         <input type="text" id="fname" name="fname"><br><br>
+
         <label for="lname">Last name:</label>
         <input type="text" id="lname" name="lname"><br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
+        <input type="password" id="password2" name="password"><br><br>
         <label for="conpassword">Confirm Password:</label>
         <input type="password" id="conpassword" name="conpassword"><br><br>
         <input type="submit" value="Submit">
     </div>
 
     <div id = "overlay"></div>
-    <script src="script.js"></script>
+    <script type="text/JavaScript" src="{% static '../static/assets/script.js' %}"></script>
 
     <footer class="footer">
         <div class="footerbox">
