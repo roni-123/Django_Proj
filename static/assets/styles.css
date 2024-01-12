@@ -261,6 +261,10 @@ dialog:not(:target):not([open]) { display: none; }
     width:"200px"
 }
 
+.menutxt{
+    text-align: center;
+    margin-top: 0%;
+}
 
 .modal{
     display: flex;
