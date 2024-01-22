@@ -25,4 +25,8 @@ window.onclick = (e) => {
     }
 }
 
+function ChangeModal(){
+    document.getElementById("modal2").innerHTML = "whatever";
+};
+
 console.log("JS is connected")
