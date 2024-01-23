@@ -76,6 +76,20 @@ h2.bean{
     background-color: #04AA6D;
 }
 
+.button-sub {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 27px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: none;
+    margin-bottom: -9px;
+    cursor: pointer;
+    background-color: #04AA6D;
+    width: 150px;
+    height: 40px;
+}
+
 .box{
     margin-top: 200px;
     display: block;
@@ -248,23 +262,86 @@ dialog:not(:target):not([open]) { display: none; }
     flex-direction: column;
 }
 
-.menu{
+.menurow{
+    color: black;
+}
+
+.menurow ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    height: 250px;
+    overflow-x: auto;
+    margin-top: -20px;
+    white-space: nowrap;
+  }
+  
+.menurow li {
+    display: inline-block;
+  }
+  
+input[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+  }
+  
+.menurow label {
+    border: 1px solid #fff;
     display: flex;
-    flex-direction: column;
-    width : 200px;
-    height : 200px;
+    position: relative;
     margin-right: 10px;
-}
-
-.menuimg{
-    height:"200px";
-    width:"200px"
-}
-
-.menutxt{
+    cursor: pointer;
     text-align: center;
-    margin-top: 0%;
+    flex-direction: column;
 }
+  
+.menurow label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+.menurow label img {
+    height: 200px;
+    width: 220px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+
+.menurow label .labelimg {
+    height: 200px;
+    width: 260px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  
+  :checked + label {
+    border-color: #ddd;
+  }
+  
+  :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+  :checked + label img {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 5px #333; */
+    z-index: -1;
+  }
 
 .modal{
     display: flex;
@@ -280,7 +357,7 @@ dialog:not(:target):not([open]) { display: none; }
     transition: top 0.5s ease-in-out;
     border: 1px solid black;
     background-color: white;
-    z-index: 2;
+    z-index: 3;
     box-shadow: 2px 2px;
 }
 
@@ -316,8 +393,84 @@ dialog:not(:target):not([open]) { display: none; }
     width: 100%;
     height: 100%;
     background-color: rgb(0, 0, 0, 0.2);
+    z-index: 2;
 }
 
 #overlay.active{
     display: block;
+}
+
+.cookie{
+    position: fixed;
+    bottom: 0;
+    background-color: burlywood;
+    border: none;    
+    height:60px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:60px;
+    z-index: 1;
+}
+
+ /* The switch - the box around the slider */
+ .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.submit{
+    width: 100px;
+    margin-top: 10px;
+    text-align: center;
 }

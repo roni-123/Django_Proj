@@ -12,3 +12,6 @@ def booking(request):
 
 def socialmedia(request):
     return render(request, "core/Social Media.html")
+
+def menu(request):
+    return render(request, "core/menu.html")

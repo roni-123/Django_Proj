@@ -27,6 +27,7 @@
     <h2 class="bean">Cafe</h2>
     <div class="topnav">
         <a href="{% url 'core:index' %}">Home</a>
+        <a href="{% url 'core:Menu'%}">Menu</a>
         <a class="active" href="{% url 'core:Booking'%}">Bookings</a>
         <a href="{% url 'core:Social Media'%}">Social Media</a>
         <a href="{% url 'core:About'%}">About</a>
@@ -66,52 +67,74 @@
         <input type = "email" id = "Email" name ="Email"><br><br>
         <label for="Phone">Phone Number:</label>
         <input type = "number" id = "Phone Number" name ="Phone Number">
+        <input type="submit" value="Submit" class="submit"></input>
     </div>
 
-    <div class = "modal" id = "modal2" style="width: max-content">
+    <div class = "modal" id = "modal2" style="width: 1050px">
         <div class = "header">
-            <h1>TITLE</h1>
+            <h1>Menu</h1>
         </div>
         <h2>Drinks</h2>
-        <div class="social">
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <span class="menutxt">Latte's</p>
-                <input type="radio" name="radiobutton" value="A" onClick="ChangeModal()">
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <span class="menutxt">Latte's</p>
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <span class="menutxt">Latte's</p>
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <span class="menutxt">Latte's</p>
-            </div>
+        <div class="menurow">
+            <ul>
+                <li>
+                  <input type="checkbox" id="myCheckbox1" />
+                  <label for="myCheckbox1"><img src="{% static '../static/assets/latte.png' %}"/>Latte</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox2" />
+                    <label for="myCheckbox2"><img src="{% static '../static/assets/cappuccinno.png' %}"/>Cappuccinno</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox3" />
+                    <label for="myCheckbox3"><img src="{% static '../static/assets/flat white.png' %}"/>Flat White</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox4" />
+                    <label for="myCheckbox4"><img src="{% static '../static/assets/americano.png' %}"/>Americano</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox5" />
+                    <label for="myCheckbox5"><img src="{% static '../static/assets/Mocha.png' %}"/>Mocha</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox6" />
+                    <label for="myCheckbox6"><img src="{% static '../static/assets/flat black.png' %}"/>Flat Black</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox7" />
+                    <label for="myCheckbox7"><img src="{% static '../static/assets/cortado.png' %}"/>Cortado</label>
+                </li>
+            </ul>
         </div>
         <h2>Food</h2>
-        <div class="social">
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <p class= "menutxt">Sandwiches</p>
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <p class= "menutxt">Sandwiches</p>
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <p class= "menutxt">Sandwiches</p>
-            </div>
-            <div class = "menu">
-                <img class= "menuimg" src = "{% static '../static/assets/Solid_black.png' %}"></img>
-                <p class= "menutxt">Sandwiches</p>
-            </div>
+        <div class="menurow">
+            <ul>
+                <li>
+                    <input type="checkbox" id="myCheckbox8" />
+                    <label for="myCheckbox8"><img class="labelimg" src="{% static '../static/assets/Croissant.png' %}"/>Butter Croissant</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox9" />
+                    <label for="myCheckbox9"><img class="labelimg" src="{% static '../static/assets/choc.png' %}"/>Chocalate Croissant</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox10" />
+                    <label for="myCheckbox10"><img class="labelimg" src="{% static '../static/assets/sandwich.png' %}"/>Ham Sandwich</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox11" />
+                    <label for="myCheckbox11"><img class="labelimg" src="{% static '../static/assets/wrap.png' %}"/>Chicken wrap</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox12" />
+                    <label for="myCheckbox12"><img src="{% static '../static/assets/sausage.png' %}"/>Sausage Bap</label>
+                </li>
+            </ul>
         </div>
-
+        <div style="text-align: end;">
+            <button class="button-sub">Choose Item</button>
+        </div>
     </div>
 
     <div class = "modal" id = "modal3">
@@ -129,7 +152,7 @@
         <input type = "email" id = "Email" name ="Email"><br><br>
         <label for="Phone">Phone Number:</label>
         <input type = "number" id = "Phone Number" name ="Phone Number">
-
+        <input type="submit" value="Submit" class="submit"></input>
     </div>
 
     <div id = "overlay"></div>

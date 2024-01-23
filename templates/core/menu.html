@@ -1,0 +1,94 @@
+{%load static%}
+
+<!-- Doctype explains the file type of the document-->
+<!DOCTYPE html>
+<!-- head contols the title of the page, websearch optimization and meta data-->
+<head>
+    <!-- Tells the website is using unicode-->
+    <meta charset="UTF-8">
+
+    <!-- Sets screen size to device display size-->
+    <meta name = "viewport" content="width=device-width, initial-scale-1.0">
+
+    <!--Web search info-->
+    <meta name="description" content="Test project for html">
+    <meta name="keywords" content="HTML">
+    <meta name="author" content="Roni Mujku">
+
+    <title>Bean and Brew\Booking</title>
+    <!-- Link css file to html-->
+    <link rel="stylesheet" href="{%static 'assets/styles.css'%}">
+    <script src="{% static '../static/assets/script.js' %}"></script>
+    
+</head>
+
+<body>
+    <h1 class = "bean">
+        Bean & Brew
+    </h1>
+    <h2 class="bean">Cafe</h2>
+    <div class="topnav">
+        <a href="{% url 'core:index' %}">Home</a>
+        <a class="active" href="{% url 'core:Menu'%}">Menu</a>
+        <a href="{% url 'core:Booking'%}">Bookings</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a href="{% url 'core:About'%}">About</a>
+    </div>
+    <h1 class="bean" style="text-align: left;font-size: 40px;margin-bottom: 20px;">Menu</h1>
+    <h2>Drinks</h2>
+    <div class="menurow">
+        <ul>
+            <li>
+            <label><img src="{% static '../static/assets/latte.png' %}"/>Latte</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/cappuccinno.png' %}"/>Cappuccinno</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/flat white.png' %}"/>Flat White</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/americano.png' %}"/>Americano</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/Mocha.png' %}"/>Mocha</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/flat black.png' %}"/>Flat Black</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/cortado.png' %}"/>Cortado</label>
+            </li>
+        </ul>
+    </div>
+    <h2>Food</h2>
+    <div class="menurow">
+        <ul>
+            <li>
+                <label><img class="labelimg" src="{% static '../static/assets/Croissant.png' %}"/>Butter Croissant</label>
+            </li>
+            <li>
+                <label><img class="labelimg" src="{% static '../static/assets/choc.png' %}"/>Chocalate Croissant</label>
+            </li>
+            <li>
+                <label><img class="labelimg" src="{% static '../static/assets/sandwich.png' %}"/>Ham Sandwich</label>
+            </li>
+            <li>
+                <label><img class="labelimg" src="{% static '../static/assets/wrap.png' %}"/>Chicken wrap</label>
+            </li>
+            <li>
+                <label><img src="{% static '../static/assets/sausage.png' %}"/>Sausage Bap</label>
+            </li>
+        </ul>
+    </div>
+    
+    <footer class="footer">
+        <div class="footerbox">
+            <p>
+                Bean&Brew.com
+                <br><br>
+                The number one family owned cafe
+            </p>
+        </div>
+    </footer>
+</body>
