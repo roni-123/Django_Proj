@@ -6,6 +6,7 @@ btns.forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelector(btn.dataset.target).classList.add("active");
         overlay.classList.add("active");
+        window.resizeTo(400, 600);
     })
 })
 
@@ -24,9 +25,5 @@ window.onclick = (e) => {
         overlay.classList.remove("active");
     }
 }
-
-function ChangeModal(){
-    document.getElementById("modal2").innerHTML = "whatever";
-};
 
 console.log("JS is connected")

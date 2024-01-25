@@ -18,6 +18,7 @@
     <title>Bean and Brew\Booking</title>
     <!-- Link css file to html-->
     <link rel="stylesheet" href="{%static 'assets/styles.css'%}">
+    <link rel="shortcut icon" href="#" />
     
 </head>
 <body>
@@ -51,9 +52,9 @@
 
         <label for="date">Date:</label>
         <input type="date" id="date" name="date"><br>
-        <label for="Time">Time:</label>
-        <input type="time " value="08:30:00" step="600"><br>
-        <label for="people">People</label>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" value="08:30:00" step="600"><br>
+        <label for="Peoples">People</label>
         <select name="Peoples" id="Peoples">
             <option value="" selected="selected">1 Person</option>
             <option value="" selected="selected">2 People</option>
@@ -64,9 +65,9 @@
         <label for="Full Name">Full Name:</label>
         <input id = "Full Name" name ="Full Name"><br><br>
         <label for="Email">Email:</label>
-        <input type = "email" id = "Email" name ="Email"><br><br>
+        <input type = "email" id = "Email" name ="Email" autocomplete="off"><br><br>
         <label for="Phone">Phone Number:</label>
-        <input type = "number" id = "Phone Number" name ="Phone Number">
+        <input type = "number" id = "Phone" name ="Phone" autocomplete="off">
         <input type="submit" value="Submit" class="submit"></input>
     </div>
 
@@ -130,6 +131,14 @@
                     <input type="checkbox" id="myCheckbox12" />
                     <label for="myCheckbox12"><img src="{% static '../static/assets/sausage.png' %}"/>Sausage Bap</label>
                 </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox13" />
+                    <label for="myCheckbox13"><img class="labelimg" src="{% static '../static/assets/carrot-cake.png' %}"/>Carrot Cake</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="myCheckbox14" />
+                    <label for="myCheckbox14"><img class="labelimg" src="{% static '../static/assets/millionaire.png' %}"/>Millionaire Shortbread</label>
+                </li>
             </ul>
         </div>
         <div style="text-align: end;">
@@ -142,16 +151,16 @@
             <button class="modal-btn" data-target = "#modal3">&times;</button>
             <h3>You are booking a Cooking Class</h3>
         </div>
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date"><br>
-        <label for="Time">Time:</label>
-        <input type="time " value="08:30:00" step="600"><br>
-        <label for="Full Name">Full Name:</label>
-        <input id = "Full Name" name ="Full Name"><br><br>
-        <label for="Email">Email:</label>
-        <input type = "email" id = "Email" name ="Email"><br><br>
-        <label for="Phone">Phone Number:</label>
-        <input type = "number" id = "Phone Number" name ="Phone Number">
+        <label for="date2">Date:</label>
+        <input type="date" id="date2" name="date2"><br>
+        <label for="time2">Time:</label>
+        <input type="time" id="time2" name="time2" value="08:30:00" step="600"><br>
+        <label for="Full Name2">Full Name:</label>
+        <input id = "Full Name2" name ="Full Name2"><br><br>
+        <label for="Email2">Email:</label>
+        <input type = "email" id = "Email2" name ="Email2" autocomplete="off"><br><br>
+        <label for="Phone2">Phone Number:</label>
+        <input type = "number" id = "Phone2" name ="Phone2">
         <input type="submit" value="Submit" class="submit"></input>
     </div>
 
