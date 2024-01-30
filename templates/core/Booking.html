@@ -75,6 +75,13 @@
         <div class = "header">
             <h1>Menu</h1>
         </div>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+            <h4>You are ordering for</h4><select name="Location" id="Location" style="margin: 20px;">
+                <option value="" selected="selected">Harrogate</option>
+                <option value="" selected="selected">Leeds</option>
+                <option value="" selected="selected">Knaresborough Castle</option>
+                </select><br>
+        </div>
         <h2>Drinks</h2>
         <div class="menurow">
             <ul>
@@ -165,15 +172,16 @@
     </div>
 
     <div id = "overlay"></div>
-    <script src="{% static '../static/assets/script.js' %}"></script>
 
-    <footer class="footer">
-        <div class="footerbox">
-            <p>
-                Bean&Brew.com
-                <br><br>
-                The number one family owned cafe
-            </p>
-        </div>
-    </footer>
+    <script src="{% static '../static/assets/script.js' %}"></script>
 </body>
+
+<footer class="footer">
+    <div class="footerbox">
+        <p>
+            Bean&Brew.com
+            <br><br>
+            The number one family owned cafe
+        </p>
+    </div>
+</footer>
