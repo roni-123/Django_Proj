@@ -33,28 +33,29 @@
         <a href="{% url 'core:About'%}">About</a>
     </div>
     <div>
-    <div class="messages">
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-        </ul>
-        <button type="button" class="messagesbtn" data-bs-dismiss="alert" aria-label="Close">&times;</button>
-    {% endif %}
+    {% if messages %}<script>alert("{% for message in messages %}{{ message }}\n{% endfor %}");</script>{% endif %}
     </div>
-
     <div class="pad">
     <p> 
         Welcome to bean and brew the number one family owned cafe in the UK, feel free to use our website to book items for pickup at one of our three locations and to join us and make an account to keep up to date with news of new offers and events. Also feel free to join in on our #ratemycake social media campaign to support us
     </p>
+    
+    {% if user.is_authenticated %}
+    <h3>Hello {{name}}</h3>
+    <h4>You are successfully logged in</h4>
+    <a href="{% url 'core:signout'%}">
+    <button class="button">Sign out</button>
+    </a>
+    {% else %}
     <h3> 
         To log in or create an account click here
     </h3>
-    
+
     <button class="button" data-target = "#modal1">Log in</button>
     <button class="button" data-target = "#modal2">Sign Up</button>
+    {% endif %}
     </div>
+
 
     <div class = "modal" id = "modal1">
         <div class="header">
@@ -83,15 +84,17 @@
         </div>
         <h3>Create an account for Bean & Brew</h3>
         <form action ="" method ="POST">{% csrf_token %}
-        <label for="email">Email Address:</label>
+        <label for="email2">Email Address:</label>
         <input type="email" id="email2" name="email"><br><br>
         <label for="fname">First name:</label>
         <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname"><br><br>
         <label for="password2">Password:</label>
         <input type="password" id="password2" name="password"><br><br>
         <label for="conpassword">Confirm Password:</label>
         <input type="password" id="conpassword" name="conpassword"><br><br>
-        <input type="submit" value="Submit" name ="Sign_in" class="submit"></input>
+        <input type="submit" value="Submit" name ="Sign_up" class="submit"></input>
         </form>
     </div>
 

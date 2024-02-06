@@ -8,5 +8,6 @@ urlpatterns = [
     path("booking/", booking, name="Booking"),
     path("about/", about, name="About"),
     path("social/", socialmedia, name="Social Media"),
-    path("menu/", menu, name="Menu")
+    path("menu/", menu, name="Menu"),
+    path("logout/", signout, name="signout")
 ]

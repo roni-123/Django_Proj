@@ -1,38 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Members
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 def index(request):
     if request.method == "POST":
-        if "Sign_in" in request.POST:
+        if "Sign_up" in request.POST:
             fname = request.POST["fname"]
-            email = request.POST["email"]
+            lname = request.POST["lname"]
             password = request.POST["password"]
-            conpassword = request.POST["conpassword"]
+            email = request.POST["email"]
+            username = email.split('@')[0]
 
-            new_member = Members(fname = fname, email = email,password = password,conpassword = conpassword)
+            
+
+            new_member = User.objects.create_user(first_name = fname,last_name = lname, email = email,password = password, username = username)
             new_member.save()
 
             messages.success(request,"Your account has been created")
+
+            return redirect('/')
 
         if "Log_in" in request.POST:
             email = request.POST["email"]
             password = request.POST["password"]
 
-            user = authenticate(email=email,password=password)
+            user = authenticate(username=email.split('@')[0],password=password)
 
             if user is not None:
+
                 login(request,user)
-                name = user.fname
-                return render(request, "core/index.html", {"fname":name})
+                name = user.username
+                return redirect('/', {"name":name})
             
             else:
                 messages.error(request,"Wrong credentials")
+                return redirect('/')
 
 
     return render(request, "core/index.html")
+
+def signout(request):
+    logout(request)
+    return redirect('/')
 
 def about(request):
     return render(request, "core/About.html")
