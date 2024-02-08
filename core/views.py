@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Members
+from .forms import TableForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
@@ -51,7 +51,21 @@ def about(request):
     return render(request, "core/About.html")
 
 def booking(request):
-    return render(request, "core/Booking.html")
+    if request.method == "POST":
+        form = TableForm(request.POST,request.FILES)
+        print(request.FILES)
+        # check whether it's valid:
+        if form.is_valid():
+            print("DSAAAAADSAAAAAAAAA")
+            # process the data in form.cleaned_data as required
+            form.save()
+        # Form gives error for wrong type of email/phone but not the html
+        print(form.errors)
+        return redirect("/booking/")
+    else:
+        form = TableForm()
+    
+    return render(request, "core/Booking.html", {'form':TableForm})
 
 def socialmedia(request):
     return render(request, "core/Social Media.html")

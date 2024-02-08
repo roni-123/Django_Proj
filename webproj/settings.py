@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #CUSTOM APPS
     'core',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

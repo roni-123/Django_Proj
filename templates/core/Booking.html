@@ -41,7 +41,7 @@
     </div>
 
     <div class = "modal" id = "modal1">
-        <div class = "header">
+        <!--<div class = "header">
             <button class="modal-btn" data-target = "#modal1">&times;</button>
             <h3>You are booking a table at</h3><select name="Location" id="Location">
                 <option value="" selected="selected">Harrogate</option>
@@ -69,6 +69,14 @@
         <label for="Phone">Phone Number:</label>
         <input type = "number" id = "Phone" name ="Phone" autocomplete="off">
         <input type="submit" value="Submit" class="submit"></input>
+    -->
+    
+    <form action = "{% url 'core:Booking'%}" method = "POST" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{form }} 
+        <input type="submit" value=Submit> 
+    </form> 
+
     </div>
 
     <div class = "modal" id = "modal2" style="width: 1050px">
