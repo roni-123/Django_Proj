@@ -33,6 +33,10 @@
         <a href="{% url 'core:Social Media'%}">Social Media</a>
         <a href="{% url 'core:About'%}">About</a>
     </div>
+    
+    <div>
+        {% if messages %}<script>alert("{% for message in messages %}{{ message }}\n{% endfor %}");</script>{% endif %}
+    </div>
 
     <div class = "buttonalign">
         <button class="button" data-target = "#modal1">Book a Table</button>
@@ -70,12 +74,13 @@
         <input type = "number" id = "Phone" name ="Phone" autocomplete="off">
         <input type="submit" value="Submit" class="submit"></input>
     -->
-    
+    <div class="forms">
     <form action = "{% url 'core:Booking'%}" method = "POST" enctype="multipart/form-data"> 
         {% csrf_token %} 
         {{form }} 
         <input type="submit" value=Submit> 
     </form> 
+    </div>
 
     </div>
 

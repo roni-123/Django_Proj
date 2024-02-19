@@ -511,3 +511,7 @@ input:checked + .slider:before {
     text-align: end;
     cursor: pointer;
 }
+
+.forms{
+    
+}

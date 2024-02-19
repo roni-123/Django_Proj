@@ -60,7 +60,16 @@ def booking(request):
             # process the data in form.cleaned_data as required
             form.save()
         # Form gives error for wrong type of email/phone but not the html
-        print(form.errors)
+        if form.errors:
+            #print(type(target))
+            error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
+            error_string = error_string.split("<br/> ")
+            print(type(error_string),error_string)
+
+            messages.error(request,error_string[0])
+            messages.error(request,error_string[1])
+            return redirect("/booking/")
+        
         return redirect("/booking/")
     else:
         form = TableForm()
