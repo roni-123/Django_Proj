@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import TableForm
+from .forms import TableForm,ClassForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
@@ -52,29 +52,54 @@ def about(request):
 
 def booking(request):
     if request.method == "POST":
-        form = TableForm(request.POST,request.FILES)
-        print(request.FILES)
-        # check whether it's valid:
-        if form.is_valid():
-            print("DSAAAAADSAAAAAAAAA")
-            # process the data in form.cleaned_data as required
-            form.save()
-        # Form gives error for wrong type of email/phone but not the html
-        if form.errors:
-            #print(type(target))
-            error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
-            error_string = error_string.split("<br/> ")
-            print(type(error_string),error_string)
+        if "booking" in request.POST:
+            form = TableForm(request.POST,request.FILES)
+            print(form)
+            # check whether it's valid:
+            if form.is_valid():
+                print("DSAAAAADSAAAAAAAAA")
+                # process the data in form.cleaned_data as required
+                form.save()
+            
+            if form.errors:
+                #print(type(target))
+                error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
+                error_string = error_string.split("<br/> ")
+                print(type(error_string),error_string)
 
-            messages.error(request,error_string[0])
-            messages.error(request,error_string[1])
+                messages.error(request,error_string[0])
+                messages.error(request,error_string[1])
+                return redirect("/booking/")
+            
             return redirect("/booking/")
         
-        return redirect("/booking/")
-    else:
-        form = TableForm()
+        elif "class" in request.POST:
+            form = ClassForm(request.POST,request.FILES)
+            print(request.FILES)
+            # check whether it's valid:
+            if form.is_valid():
+                print("DSAAAAADSAAAAAAAAA")
+                # process the data in form.cleaned_data as required
+                form.save()
+            
+            if form.errors:
+                #print(type(target))
+                error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
+                error_string = error_string.split("<br/> ")
+                print(type(error_string),error_string)
+
+                messages.error(request,error_string[0])
+                messages.error(request,error_string[1])
+                return redirect("/booking/")
+            
+            return redirect("/booking/")
+
+    context = {
+        'table_form' : TableForm(),
+        'class_form' : ClassForm(),
+    }
     
-    return render(request, "core/Booking.html", {'form':TableForm})
+    return render(request, "core/Booking.html",context)
 
 def socialmedia(request):
     return render(request, "core/Social Media.html")

@@ -45,49 +45,34 @@
     </div>
 
     <div class = "modal" id = "modal1">
-        <!--<div class = "header">
-            <button class="modal-btn" data-target = "#modal1">&times;</button>
-            <h3>You are booking a table at</h3><select name="Location" id="Location">
-                <option value="" selected="selected">Harrogate</option>
-                <option value="" selected="selected">Leeds</option>
-                <option value="" selected="selected">Knaresborough Castle</option>
-                </select><br>
-        </div>
-
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date"><br>
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" value="08:30:00" step="600"><br>
-        <label for="Peoples">People</label>
-        <select name="Peoples" id="Peoples">
-            <option value="" selected="selected">1 Person</option>
-            <option value="" selected="selected">2 People</option>
-            <option value="" selected="selected">3 People</option>
-            <option value="" selected="selected">4 People</option>
-            <option value="" selected="selected">5 People</option>
-        </select><br><br>
-        <label for="Full Name">Full Name:</label>
-        <input id = "Full Name" name ="Full Name"><br><br>
-        <label for="Email">Email:</label>
-        <input type = "email" id = "Email" name ="Email" autocomplete="off"><br><br>
-        <label for="Phone">Phone Number:</label>
-        <input type = "number" id = "Phone" name ="Phone" autocomplete="off">
-        <input type="submit" value="Submit" class="submit"></input>
-    -->
-    <div class="forms">
     <form action = "{% url 'core:Booking'%}" method = "POST" enctype="multipart/form-data"> 
         {% csrf_token %} 
-        {{form }} 
-        <input type="submit" value=Submit> 
-    </form> 
-    </div>
-
+        {{ table_form.non_field_errors }}
+        <div class="header">
+            {{ table_form.resturaunt.errors }}
+            <h2>You are booking a table at</h2>
+            <label for="{{ table_form.resturaunt.id_for_label }}"></label>
+            {{ table_form.resturaunt }}
+        </div>
+        <div class="forms">
+        {% for field in table_form.visible_fields %}
+        {% if not forloop.first %}
+            <div class="formsfields">
+            {{field.label_tag}}
+            {{ field }}
+            </div>
+        {% endif %}
+        {% endfor %}
+        <input type="submit" value=Submit name="booking" style="margin: 10px; margin-top: 0px;"> 
+        </div>
+    </form>
     </div>
 
     <div class = "modal" id = "modal2" style="width: 1050px">
         <div class = "header">
             <h1>Menu</h1>
         </div>
+        <form action="" method="POST">{% csrf_token %} 
         <div style="display: flex;flex-wrap: wrap;justify-content: center;">
             <h4>You are ordering for</h4><select name="Location" id="Location" style="margin: 20px;">
                 <option value="" selected="selected">Harrogate</option>
@@ -162,26 +147,28 @@
             </ul>
         </div>
         <div style="text-align: end;">
-            <button class="button-sub">Choose Item</button>
+            <button type="submit" class="button-sub">Choose Item</button>
         </div>
+        </form>
     </div>
 
     <div class = "modal" id = "modal3">
         <div class = "header">
-            <button class="modal-btn" data-target = "#modal3">&times;</button>
             <h3>You are booking a Cooking Class</h3>
         </div>
-        <label for="date2">Date:</label>
-        <input type="date" id="date2" name="date2"><br>
-        <label for="time2">Time:</label>
-        <input type="time" id="time2" name="time2" value="08:30:00" step="600"><br>
-        <label for="Full Name2">Full Name:</label>
-        <input id = "Full Name2" name ="Full Name2"><br><br>
-        <label for="Email2">Email:</label>
-        <input type = "email" id = "Email2" name ="Email2" autocomplete="off"><br><br>
-        <label for="Phone2">Phone Number:</label>
-        <input type = "number" id = "Phone2" name ="Phone2">
-        <input type="submit" value="Submit" class="submit"></input>
+        <form action = "{% url 'core:Booking'%}" method = "POST" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+            {{ class_form.non_field_errors }}
+            <div class="forms">
+            {% for field in class_form.visible_fields %}
+                <div class="formsfields">
+                {{field.label_tag}}
+                {{ field }}
+                </div>
+            {% endfor %}
+            </div>
+            <input type="submit" value="Submit" name="class" class="submit"></input>
+        </form>
     </div>
 
     <div id = "overlay"></div>

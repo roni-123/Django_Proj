@@ -381,6 +381,7 @@ input[type="checkbox"][id^="myCheckbox"] {
     background-color: lightgray;
     border-bottom: none;
     box-shadow: gray 1px 1px;
+    align-items: center;
 }
 
 .modal.active{
@@ -513,5 +514,10 @@ input:checked + .slider:before {
 }
 
 .forms{
-    
+    display: flex;
+    flex-direction: column;
+}
+
+.formsfields {
+    margin-bottom: 20px;
 }
