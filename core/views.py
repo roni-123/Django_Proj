@@ -3,10 +3,12 @@ from .forms import TableForm,ClassForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
+from .models import Menu
 
 # Create your views here.
 
 def index(request):
+    context = {}
     if request.method == "POST":
         if "Sign_up" in request.POST:
             fname = request.POST["fname"]
@@ -33,15 +35,17 @@ def index(request):
             if user is not None:
 
                 login(request,user)
-                name = user.username
-                return redirect('/', {"name":name})
+                name = request.user.username
+                print(name)
+                context['name'] = name
+                return redirect('/')
             
             else:
                 messages.error(request,"Wrong credentials")
                 return redirect('/')
 
 
-    return render(request, "core/index.html")
+    return render(request, "core/index.html",context)
 
 def signout(request):
     logout(request)
@@ -93,6 +97,24 @@ def booking(request):
                 return redirect("/booking/")
             
             return redirect("/booking/")
+        
+        elif "menu" in request.POST:
+            resturaunt = request.POST['Location']
+            try:
+                menitems = request.POST['items']
+            except:
+                messages.error(request,"Did not enter an item")
+                return redirect("/booking/")
+            
+            email = request.POST['email3']
+            item = Menu(email = email,items = menitems ,resturaunt =resturaunt)
+            item.save()
+            messages.success(request,"Your order has been created")
+            return redirect("/booking/")
+
+
+            
+
 
     context = {
         'table_form' : TableForm(),

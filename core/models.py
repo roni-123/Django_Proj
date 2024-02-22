@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-import datetime
+from django_mysql.models import ListCharField
 
 # Create your models here.
 
@@ -38,15 +38,21 @@ class Classes(models.Model):
         return self.email
     
 class Menu(models.Model):
+    email = models.EmailField(default='')
     CHOICES = (('Harrogate', 'Harrogate'),('Leeds', 'Leeds'),('Knaresborough Castle', 'Knaresborough Castle'))
     resturaunt = models.CharField(max_length=50,choices=CHOICES, default = 'Harrogate')
-
+    items = ListCharField(
+        base_field=models.CharField(max_length=20),
+        max_length=(6 * 11),
+        default = "None"
+    )
     
 
 
     class Meta:
-        verbose_name = 'Class'
-        verbose_name_plural = 'Classes'
+        verbose_name = 'Menu Order'
+        verbose_name_plural = 'Menu Orders'
 
     def __str__(self):
         return self.email
+    

@@ -27,6 +27,8 @@
         Bean & Brew
     </h1>
     <h2 class="bean">Cafe</h2>
+    
+    {% if user.is_authenticated %}
     <div class="topnav">
         <a href="{% url 'core:index' %}">Home</a>
         <a class="active" href="{% url 'core:Menu'%}">Menu</a>
@@ -34,6 +36,16 @@
         <a href="{% url 'core:Social Media'%}">Social Media</a>
         <a href="{% url 'core:About'%}">About</a>
     </div>
+    {% else %}
+    <div class="topnav">
+        <a href="{% url 'core:index' %}">Home</a>
+        <a class="active" href="{% url 'core:Menu'%}">Menu</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a href="{% url 'core:About'%}">About</a>
+    </div>
+    {% endif %}
+
+    <div class="pad">
     <h1 class="bean" style="text-align: left;font-size: 40px;margin-bottom: 20px;">Menu</h1>
     <h2>Drinks</h2>
     <div class="menurow">
@@ -86,6 +98,7 @@
                 <label><img class="labelimg" src="{% static '../static/assets/millionaire.png' %}"/>Millionaire Shortbread</label>
             </li>
         </ul>
+    </div>
     </div>
     
     <footer class="footer">

@@ -26,6 +26,7 @@
         Bean & Brew
     </h1>
     <h2 class="bean">Cafe</h2>
+    {% if user.is_authenticated %}
     <div class="topnav">
         <a href="{% url 'core:index' %}">Home</a>
         <a href="{% url 'core:Menu'%}">Menu</a>
@@ -33,6 +34,14 @@
         <a href="{% url 'core:Social Media'%}">Social Media</a>
         <a href="{% url 'core:About'%}">About</a>
     </div>
+    {% else %}
+    <div class="topnav">
+        <a class="active" href="{% url 'core:index' %}">Home</a>
+        <a href="{% url 'core:Menu'%}">Menu</a>
+        <a href="{% url 'core:Social Media'%}">Social Media</a>
+        <a href="{% url 'core:About'%}">About</a>
+    </div>
+    {% endif %}
     
     <div>
         {% if messages %}<script>alert("{% for message in messages %}{{ message }}\n{% endfor %}");</script>{% endif %}
@@ -73,82 +82,83 @@
             <h1>Menu</h1>
         </div>
         <form action="" method="POST">{% csrf_token %} 
-        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-            <h4>You are ordering for</h4><select name="Location" id="Location" style="margin: 20px;">
-                <option value="" selected="selected">Harrogate</option>
-                <option value="" selected="selected">Leeds</option>
-                <option value="" selected="selected">Knaresborough Castle</option>
-                </select><br>
-        </div>
-        <h2>Drinks</h2>
-        <div class="menurow">
-            <ul>
-                <li>
-                  <input type="checkbox" id="myCheckbox1" />
-                  <label for="myCheckbox1"><img src="{% static '../static/assets/latte.png' %}"/>Latte</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox2" />
-                    <label for="myCheckbox2"><img src="{% static '../static/assets/cappuccinno.png' %}"/>Cappuccinno</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox3" />
-                    <label for="myCheckbox3"><img src="{% static '../static/assets/flat white.png' %}"/>Flat White</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox4" />
-                    <label for="myCheckbox4"><img src="{% static '../static/assets/americano.png' %}"/>Americano</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox5" />
-                    <label for="myCheckbox5"><img src="{% static '../static/assets/Mocha.png' %}"/>Mocha</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox6" />
-                    <label for="myCheckbox6"><img src="{% static '../static/assets/flat black.png' %}"/>Flat Black</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox7" />
-                    <label for="myCheckbox7"><img src="{% static '../static/assets/cortado.png' %}"/>Cortado</label>
-                </li>
-            </ul>
-        </div>
-        <h2>Food</h2>
-        <div class="menurow">
-            <ul>
-                <li>
-                    <input type="checkbox" id="myCheckbox8" />
-                    <label for="myCheckbox8"><img class="labelimg" src="{% static '../static/assets/Croissant.png' %}"/>Butter Croissant</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox9" />
-                    <label for="myCheckbox9"><img class="labelimg" src="{% static '../static/assets/choc.png' %}"/>Chocalate Croissant</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox10" />
-                    <label for="myCheckbox10"><img class="labelimg" src="{% static '../static/assets/sandwich.png' %}"/>Ham Sandwich</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox11" />
-                    <label for="myCheckbox11"><img class="labelimg" src="{% static '../static/assets/wrap.png' %}"/>Chicken wrap</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox12" />
-                    <label for="myCheckbox12"><img src="{% static '../static/assets/sausage.png' %}"/>Sausage Bap</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox13" />
-                    <label for="myCheckbox13"><img class="labelimg" src="{% static '../static/assets/carrot-cake.png' %}"/>Carrot Cake</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="myCheckbox14" />
-                    <label for="myCheckbox14"><img class="labelimg" src="{% static '../static/assets/millionaire.png' %}"/>Millionaire Shortbread</label>
-                </li>
-            </ul>
-        </div>
-        <div style="text-align: end;">
-            <button type="submit" class="button-sub">Choose Item</button>
-        </div>
+            <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+                <h4>You are ordering for</h4><select name="Location" id="Location" style="margin: 20px;">
+                    <option value="" selected="selected">Harrogate</option>
+                    <option value="" selected="selected">Leeds</option>
+                    <option value="" selected="selected">Knaresborough Castle</option>
+                    </select><br>
+                <label style="margin-top: 20px; margin-right: 10px; font-weight:bold" for="email3">Email Address:</label> <input type="email" id="email3" name="email3" autocomplete="email" style="margin-top: 20px; margin-bottom: 20px;"><br><br>
+            </div>
+            <h2>Drinks</h2>
+            <div class="menurow">
+                <ul>
+                    <li>
+                    <input type="checkbox" id="myCheckbox1" name = "items">
+                    <label for="myCheckbox1"><img src="{% static '../static/assets/latte.png' %}"/>Latte</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox2" name = "items">
+                        <label for="myCheckbox2"><img src="{% static '../static/assets/cappuccinno.png' %}"/>Cappuccinno</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox3" name = "items">
+                        <label for="myCheckbox3"><img src="{% static '../static/assets/flat white.png' %}"/>Flat White</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox4" name = "items">
+                        <label for="myCheckbox4"><img src="{% static '../static/assets/americano.png' %}"/>Americano</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox5" name = "items">
+                        <label for="myCheckbox5"><img src="{% static '../static/assets/Mocha.png' %}"/>Mocha</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox6" name = "items">
+                        <label for="myCheckbox6"><img src="{% static '../static/assets/flat black.png' %}"/>Flat Black</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox7" name = "items">
+                        <label for="myCheckbox7"><img src="{% static '../static/assets/cortado.png' %}"/>Cortado</label>
+                    </li>
+                </ul>
+            </div>
+            <h2>Food</h2>
+            <div class="menurow">
+                <ul>
+                    <li>
+                        <input type="checkbox" id="myCheckbox8" name = "items">
+                        <label for="myCheckbox8"><img class="labelimg" src="{% static '../static/assets/Croissant.png' %}"/>Butter Croissant</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox9" name = "items">
+                        <label for="myCheckbox9"><img class="labelimg" src="{% static '../static/assets/choc.png' %}"/>Chocalate Croissant</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox10" name = "items">
+                        <label for="myCheckbox10"><img class="labelimg" src="{% static '../static/assets/sandwich.png' %}"/>Ham Sandwich</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox11" name = "items">
+                        <label for="myCheckbox11"><img class="labelimg" src="{% static '../static/assets/wrap.png' %}"/>Chicken wrap</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox12" name = "items">
+                        <label for="myCheckbox12"><img src="{% static '../static/assets/sausage.png' %}"/>Sausage Bap</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox13" name = "items">
+                        <label for="myCheckbox13"><img class="labelimg" src="{% static '../static/assets/carrot-cake.png' %}"/>Carrot Cake</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="myCheckbox14" name = "items">
+                        <label for="myCheckbox14"><img class="labelimg" src="{% static '../static/assets/millionaire.png' %}"/>Millionaire Shortbread</label>
+                    </li>
+                </ul>
+            </div>
+            <div style="text-align: end;">
+                <input type="submit" name = "menu" class="button"></input>
+            </div>
         </form>
     </div>
 
