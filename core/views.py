@@ -101,11 +101,13 @@ def booking(request):
         elif "menu" in request.POST:
             resturaunt = request.POST['Location']
             try:
-                menitems = request.POST['items']
+                menitems = request.POST.getlist('items[]')
             except:
                 messages.error(request,"Did not enter an item")
                 return redirect("/booking/")
             
+            print(menitems)
+
             email = request.POST['email3']
             item = Menu(email = email,items = menitems ,resturaunt =resturaunt)
             item.save()

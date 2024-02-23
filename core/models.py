@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django_mysql.models import ListCharField
+from django_mysql.models import ListCharField,ListTextField
 
 # Create your models here.
 
@@ -41,13 +41,12 @@ class Menu(models.Model):
     email = models.EmailField(default='')
     CHOICES = (('Harrogate', 'Harrogate'),('Leeds', 'Leeds'),('Knaresborough Castle', 'Knaresborough Castle'))
     resturaunt = models.CharField(max_length=50,choices=CHOICES, default = 'Harrogate')
-    items = ListCharField(
-        base_field=models.CharField(max_length=20),
-        max_length=(6 * 11),
-        default = "None"
+    items = ListTextField(
+        base_field=models.CharField(max_length=255),
+        size=200,  # Maximum of 200 ids in list
     )
-    
 
+    # Add prices
 
     class Meta:
         verbose_name = 'Menu Order'

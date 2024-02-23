@@ -30,4 +30,9 @@ window.onclick = (e) => {
     }
 }
 
+function OptionsSelected(me)
+{
+    alert(me.id);
+}
+
 console.log("JS is connected")

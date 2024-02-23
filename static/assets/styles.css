@@ -290,6 +290,10 @@ dialog:not(:target):not([open]) { display: none; }
 .menurow li {
     display: inline-block;
   }
+
+.menurow li input{
+    opacity: 0;
+}
   
 input[type="checkbox"][id^="myCheckbox"] {
     display: none;
