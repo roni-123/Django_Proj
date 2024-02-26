@@ -81,14 +81,14 @@
         <div class = "header">
             <h1>Menu</h1>
         </div>
-        <form action="" method="POST">{% csrf_token %} 
+        <form action="" method="POST" onsubmit="valthis();">{% csrf_token %} 
             <div style="display: flex;flex-wrap: wrap;justify-content: center;">
                 <h4>You are ordering for</h4><select name="Location" id="Location" style="margin: 20px;">
                     <option value="" selected="selected">Harrogate</option>
                     <option value="" selected="selected">Leeds</option>
                     <option value="" selected="selected">Knaresborough Castle</option>
                     </select><br>
-                <label style="margin-top: 20px; margin-right: 10px; font-weight:bold" for="email3">Email Address:</label> <input type="email" id="email3" name="email3" autocomplete="email" style="margin-top: 20px; margin-bottom: 20px;"><br><br>
+                <label style="margin-top: 20px; margin-right: 10px; font-weight:bold" for="email3">Email Address:</label> <input type="email" id="email3" name="email3" autocomplete="email" required="required" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" style="margin-top: 20px; margin-bottom: 20px;"><br><br>
             </div>
             <h2>Drinks</h2>
             <div class="menurow">
@@ -171,6 +171,9 @@
             {{ class_form.non_field_errors }}
             <div class="forms">
             {% for field in class_form.visible_fields %}
+                <div>
+                    {{ field.errors }}
+                </div>
                 <div class="formsfields">
                 {{field.label_tag}}
                 {{ field }}

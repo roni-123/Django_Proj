@@ -30,9 +30,21 @@ window.onclick = (e) => {
     }
 }
 
-function OptionsSelected(me)
-{
-    alert(me.id);
+function valthis() {
+    var checkBoxes = document.getElementsByName('items[]');
+    var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked) {
+            isChecked = true;
+        };
+    };
+    if (isChecked) {
+        return false;
+    } else {
+        alert('Please, select at least one item');
+        event.preventDefault();
+    }
 }
+
 
 console.log("JS is connected")

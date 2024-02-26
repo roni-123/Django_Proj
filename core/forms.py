@@ -2,12 +2,13 @@
 # from built-in library 
 from django import forms  
 from .models import Booking,Classes
-from django.contrib.admin import widgets
+from django.core.exceptions import ValidationError
+
     
 # creating a form   
 class TableForm(forms.ModelForm):
     
-    
+
     class Meta: 
         model = Booking 
         fields = "__all__"
@@ -17,11 +18,14 @@ class TableForm(forms.ModelForm):
         }
         widgets = {
             'resturaunt' : forms.Select(attrs={'style':'width: 100px; text-align: center;margin-bottom: 10px'}),
-            'date_time' : forms.SplitDateTimeWidget(date_attrs={"type": "date"}, time_attrs={"type": "time","interval": "30"})
+            'date_time' : forms.SplitDateTimeWidget(date_attrs={"type": "date",'required':'required'}, time_attrs={"type": "time","interval": "30",'required':'required'}),
+            'email' : forms.EmailInput(attrs={"required pattern": "[^@\s]+@[^@\s]+\.[^@\s]+"}),
+            'phone' : forms.TextInput(attrs = {'required':'required',"required pattern": "[0-9]{11}"})
         }
         field_classes={
             'date_time' : forms.SplitDateTimeField
         }
+
 
 class ClassForm(forms.ModelForm):
     
@@ -33,7 +37,9 @@ class ClassForm(forms.ModelForm):
             'date_time' : ('Date & Time'),
         }
         widgets = {
-            'date_time' : forms.SplitDateTimeWidget(date_attrs={"type": "date"}, time_attrs={"type": "time","interval": "30"})
+            'date_time' : forms.SplitDateTimeWidget(date_attrs={"type": "date",'required':'required'}, time_attrs={"type": "time","interval": "30",'required':'required'}),
+            'email' : forms.EmailInput(attrs={"required pattern": "[^@\s]+@[^@\s]+\.[^@\s]+"}),
+            'phone' : forms.TextInput(attrs = {'required':'required',"required pattern": "[0-9]{11}"})
         }
         field_classes={
             'date_time' : forms.SplitDateTimeField

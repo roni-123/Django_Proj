@@ -58,43 +58,22 @@ def booking(request):
     if request.method == "POST":
         if "booking" in request.POST:
             form = TableForm(request.POST,request.FILES)
-            print(form)
             # check whether it's valid:
             if form.is_valid():
-                print("DSAAAAADSAAAAAAAAA")
+                messages.success(request,"Your order has been created")
                 # process the data in form.cleaned_data as required
                 form.save()
-            
-            if form.errors:
-                #print(type(target))
-                error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
-                error_string = error_string.split("<br/> ")
-                print(type(error_string),error_string)
-
-                messages.error(request,error_string[0])
-                messages.error(request,error_string[1])
-                return redirect("/booking/")
-            
-            return redirect("/booking/")
+                return redirect("/booking/")        
         
         elif "class" in request.POST:
             form = ClassForm(request.POST,request.FILES)
             print(request.FILES)
             # check whether it's valid:
             if form.is_valid():
-                print("DSAAAAADSAAAAAAAAA")
+                messages.success(request,"Your order has been created")
+
                 # process the data in form.cleaned_data as required
                 form.save()
-            
-            if form.errors:
-                #print(type(target))
-                error_string = ''.join(f'{k.capitalize()}: {"".join(e for e in form.errors[k])}<br/> ' for k in form.errors)
-                error_string = error_string.split("<br/> ")
-                print(type(error_string),error_string)
-
-                messages.error(request,error_string[0])
-                messages.error(request,error_string[1])
-                return redirect("/booking/")
             
             return redirect("/booking/")
         
@@ -113,10 +92,6 @@ def booking(request):
             item.save()
             messages.success(request,"Your order has been created")
             return redirect("/booking/")
-
-
-            
-
 
     context = {
         'table_form' : TableForm(),

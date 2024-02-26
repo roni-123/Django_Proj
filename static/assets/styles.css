@@ -281,7 +281,7 @@ dialog:not(:target):not([open]) { display: none; }
     margin: 0;
     padding: 0;
     overflow-y: hidden;
-    height: 250px;
+    height: 300px;
     overflow-x: auto;
     margin-top: -20px;
     white-space: nowrap;
@@ -291,6 +291,7 @@ dialog:not(:target):not([open]) { display: none; }
     display: inline-block;
   }
 
+  
 .menurow li input{
     opacity: 0;
 }
