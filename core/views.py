@@ -74,7 +74,8 @@ def booking(request):
 
                 # process the data in form.cleaned_data as required
                 form.save()
-            
+            print(form.errors)
+
             return redirect("/booking/")
         
         elif "menu" in request.POST:

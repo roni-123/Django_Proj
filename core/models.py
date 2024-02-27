@@ -1,7 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django_mysql.models import ListCharField,ListTextField
-from django.core.validators import MinLengthValidator
+from django_mysql.models import ListTextField
 
 # Create your models here.
 
@@ -14,7 +13,7 @@ class Booking(models.Model):
     people = models.CharField(max_length=50,choices=People, default = '1')  
     fname = models.CharField(max_length = 50, default='')
     email = models.EmailField(default='')
-    phone = PhoneNumberField(blank=True,region="GB")
+    phone = models.CharField(blank=True,max_length=13)
 
 
     class Meta:
@@ -28,7 +27,7 @@ class Classes(models.Model):
     date_time = models.DateTimeField(null=True, default=None, blank=True)
     fname = models.CharField(max_length=50, default='')
     email = models.EmailField(default='')
-    phone = PhoneNumberField(blank=True,region="GB")
+    phone = models.CharField(blank=True,max_length=13)
 
 
     class Meta:
