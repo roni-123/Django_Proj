@@ -45,6 +45,7 @@ class Menu(models.Model):
         base_field=models.CharField(max_length=255),
         size=200,  # Maximum of 200 ids in list
     )
+    prices = models.DecimalField(max_digits=5, decimal_places=2,null=True, blank=True)
 
     # Add prices
 

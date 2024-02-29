@@ -80,16 +80,24 @@ def booking(request):
         
         elif "menu" in request.POST:
             resturaunt = request.POST['Location']
-            try:
-                menitems = request.POST.getlist('items[]')
-            except:
-                messages.error(request,"Did not enter an item")
-                return redirect("/booking/")
-            
+            menitems,prices = [],0.0
+            for items in request.POST.getlist('items[]'):
+                items = items.split(",")
+                menitems.append(items[0])
+                prices += float(items[1])
+
+            #
+            #try:
+            #    menitems = request.POST.getlist('items[]')
+            #except:
+            #    messages.error(request,"Did not enter an item")
+            #    return redirect("/booking/")
+            #
+                
             print(menitems)
 
             email = request.POST['email3']
-            item = Menu(email = email,items = menitems ,resturaunt =resturaunt)
+            item = Menu(email = email,items = menitems ,prices = prices,resturaunt =resturaunt)
             item.save()
             messages.success(request,"Your order has been created")
             return redirect("/booking/")
