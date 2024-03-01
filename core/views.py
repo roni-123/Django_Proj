@@ -2,12 +2,13 @@ from django.shortcuts import render,redirect
 from .forms import TableForm,ClassForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Menu
 
 # Create your views here.
 
 def index(request):
+    User = get_user_model()
     context = {}
     if request.method == "POST":
         if "Sign_up" in request.POST:
@@ -15,11 +16,12 @@ def index(request):
             lname = request.POST["lname"]
             password = request.POST["password"]
             email = request.POST["email"]
-            username = email.split('@')[0]
 
-            
+            if User.objects.filter(email=email).exists():
+                messages.error(request,"Email already used")
+                return redirect('/')
 
-            new_member = User.objects.create_user(first_name = fname,last_name = lname, email = email,password = password, username = username)
+            new_member = User.objects.create_user(first_name = fname,last_name = lname, email = email,password = password)
             new_member.save()
 
             messages.success(request,"Your account has been created")
@@ -30,14 +32,13 @@ def index(request):
             email = request.POST["email"]
             password = request.POST["password"]
 
-            user = authenticate(username=email.split('@')[0],password=password)
+            user = authenticate(email=email,password=password)
 
             if user is not None:
 
                 login(request,user)
-                name = request.user.username
+                name = request.user.first_name
                 print(name)
-                context['name'] = name
                 return redirect('/')
             
             else:
